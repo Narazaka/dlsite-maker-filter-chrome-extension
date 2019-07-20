@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node tool/zip.js"
   },
   "author": "",
   "license": "Zlib",
   "devDependencies": {
-    "@types/chrome": "0.0.81"
+    "@types/chrome": "0.0.81",
+    "jszip": "^3.2.2"
   }
 }
