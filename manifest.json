@@ -1,11 +1,11 @@
 {
-    "name": "DLsite 作者フィルター",
-    "description": "DLsiteの作品一覧を作者名でフィルターします",
+    "name": "DLsite フィルター",
+    "description": "DLsiteの作品一覧を作者名などでフィルターします",
     "version": "1.0.0",
     "manifest_version": 2,
     "content_scripts": [{
         "matches": ["https://www.dlsite.com/*"],
-        "js": ["content.js"]
+        "js": ["loadOptions.js", "content.js"]
     }],
     "options_ui": {
         "page": "options.html"

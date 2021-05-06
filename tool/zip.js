@@ -7,6 +7,7 @@ const zip = new JSZip();
 const root = __dirname + "/..";
 
 const filenames = [
+    "loadOptions.js",
     "content.js",
     "manifest.json",
     "options.html",

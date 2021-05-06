@@ -2,23 +2,87 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>DLsite 作者フィルター</title>
+        <title>DLsite フィルター</title>
+        <script src="loadOptions.js"></script>
         <script src="options.js"></script>
     </head>
     <body>
-        <h1>DLsite 作者フィルター オプション</h1>
-        <dl>
-            <dt>隠すモード</dt>
+        <h1>DLsite フィルター オプション</h1>
+        <p>
+            <label><input type="radio" name="tab" value="works" checked>作品</label>
+            <label><input type="radio" name="tab" value="tags">タグ</label>
+        </p>
+        <dl id="tab_works" class="tab">
+            <dt>設定スロット</dt>
             <dd>
-                <label><input type="radio" name="mode" value="gray">グレーアウト</label>
-                <label><input type="radio" name="mode" value="opacity">色を薄くする</label>
-                <label><input type="radio" name="mode" value="hide">完全に隠す</label>
+                <label><input type="radio" name="work_slot" value="0" checked>0</label>
+                <label><input type="radio" name="work_slot" value="1">1</label>
+                <label><input type="radio" name="work_slot" value="2">2</label>
+                <label><input type="radio" name="work_slot" value="3">3</label>
+                <label><input type="radio" name="work_slot" value="4">4</label>
+                <label><input type="radio" name="work_slot" value="5">5</label>
+                <label><input type="radio" name="work_slot" value="6">6</label>
+                <label><input type="radio" name="work_slot" value="7">7</label>
+                <label><input type="radio" name="work_slot" value="8">8</label>
+                <label><input type="radio" name="work_slot" value="9">9</label>
             </dd>
-            <dt>隠す作者名（改行区切り 完全一致）</dt>
+            <dt>モード</dt>
             <dd>
-                <textarea id="ignoreMakerNames" cols="20" rows="20"></textarea>
+                <label><input type="checkbox" name="work_mode" value="work_border">ボーダー</label>
+                <label><input type="checkbox" name="work_mode" value="work_background">背景色</label>
+                <label><input type="checkbox" name="work_mode" value="work_opacity">色を薄くする</label>
+                <label><input type="checkbox" name="work_mode" value="work_hide">完全に隠す</label>
+                <br>
+                <label><input type="color" name="work_borderColor">ボーダー色</label>
+                <label><input type="color" name="work_backgroundColor">背景色</label>
+            </dd>
+            <dt>対象作者名（改行区切り 完全一致）</dt>
+            <dd>
+                <textarea id="makerNames" cols="20" rows="20"></textarea>
+            </dd>
+        </dl>
+        <dl id="tab_tags" class="tab">
+            <dt>設定スロット</dt>
+            <dd>
+                <label><input type="radio" name="tag_slot" value="0" checked>0</label>
+                <label><input type="radio" name="tag_slot" value="1">1</label>
+                <label><input type="radio" name="tag_slot" value="2">2</label>
+                <label><input type="radio" name="tag_slot" value="3">3</label>
+                <label><input type="radio" name="tag_slot" value="4">4</label>
+                <label><input type="radio" name="tag_slot" value="5">5</label>
+                <label><input type="radio" name="tag_slot" value="6">6</label>
+                <label><input type="radio" name="tag_slot" value="7">7</label>
+                <label><input type="radio" name="tag_slot" value="8">8</label>
+                <label><input type="radio" name="tag_slot" value="9">9</label>
+            </dd>
+            <dt>モード</dt>
+            <dd>
+                <label><input type="checkbox" name="tag_mode" value="tag_border">タグのボーダー</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_background">タグの背景色</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_opacity">タグの色を薄くする</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_hide">タグを完全に隠す</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_work_border">該当作品のボーダー</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_work_background">該当作品の背景色</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_work_opacity">該当作品の色を薄くする</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_work_hide">該当作品を完全に隠す</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_noWork_border">非該当作品のボーダー</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_noWork_background">非該当作品の背景色</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_noWork_opacity">非該当作品の色を薄くする</label><br>
+                <label><input type="checkbox" name="tag_mode" value="tag_noWork_hide">非該当作品を完全に隠す</label><br>
+                <br>
+                <label><input type="color" name="tag_borderColor">タグボーダー色</label><br>
+                <label><input type="color" name="tag_backgroundColor">タグ背景色</label><br>
+                <label><input type="color" name="tag_work_borderColor">該当作品ボーダー色</label><br>
+                <label><input type="color" name="tag_work_backgroundColor">該当作品背景色</label><br>
+                <label><input type="color" name="tag_noWork_borderColor">非該当作品ボーダー色</label><br>
+                <label><input type="color" name="tag_noWork_backgroundColor">非該当作品背景色</label><br>
+            </dd>
+            <dt>対象タグ（改行区切り 完全一致）</dt>
+            <dd>
+                <textarea id="tags" cols="20" rows="20"></textarea>
             </dd>
         </dl>
         <button id="save" type="button">保存</button>
+        <span id="notification"></span>
     </body>
 </html>
