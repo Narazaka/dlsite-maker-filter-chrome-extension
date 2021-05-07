@@ -114,7 +114,7 @@ async function loadOptions() {
                         {
                             makerNames: rawOptions.ignoreMakerNames,
                             modes: rawOptions.mode === "gray" ? {background: true} : {[rawOptions.mode]: true},
-                            borderColor: "",
+                            borderColor: "#bbbbbb",
                             backgroundColor: "#bbbbbb",
                         },
                     ],
