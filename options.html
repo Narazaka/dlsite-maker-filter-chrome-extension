@@ -31,7 +31,7 @@
                 <label><input type="checkbox" name="work_mode" value="work_border">ボーダー</label>
                 <label><input type="checkbox" name="work_mode" value="work_background">背景色</label>
                 <label><input type="checkbox" name="work_mode" value="work_opacity">色を薄くする</label>
-                <label><input type="checkbox" name="work_mode" value="work_hide">完全に隠す</label>
+                <label><input type="checkbox" name="work_mode" value="work_hide">隠す</label>
                 <br>
                 <label><input type="color" name="work_borderColor">ボーダー色</label>
                 <label><input type="color" name="work_backgroundColor">背景色</label>
@@ -57,29 +57,42 @@
             </dd>
             <dt>モード</dt>
             <dd>
-                <label><input type="checkbox" name="tag_mode" value="tag_border">タグのボーダー</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_background">タグの背景色</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_opacity">タグの色を薄くする</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_hide">タグを完全に隠す</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_work_border">該当作品のボーダー</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_work_background">該当作品の背景色</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_work_opacity">該当作品の色を薄くする</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_work_hide">該当作品を完全に隠す</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_noWork_border">非該当作品のボーダー</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_noWork_background">非該当作品の背景色</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_noWork_opacity">非該当作品の色を薄くする</label><br>
-                <label><input type="checkbox" name="tag_mode" value="tag_noWork_hide">非該当作品を完全に隠す</label><br>
-                <br>
-                <label><input type="color" name="tag_borderColor">タグボーダー色</label><br>
-                <label><input type="color" name="tag_backgroundColor">タグ背景色</label><br>
-                <label><input type="color" name="tag_work_borderColor">該当作品ボーダー色</label><br>
-                <label><input type="color" name="tag_work_backgroundColor">該当作品背景色</label><br>
-                <label><input type="color" name="tag_noWork_borderColor">非該当作品ボーダー色</label><br>
-                <label><input type="color" name="tag_noWork_backgroundColor">非該当作品背景色</label><br>
+                <dl>
+                    <dt>タグ</dt>
+                    <dd>
+                        <label><input type="checkbox" name="tag_mode" value="tag_border">ボーダー</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_background">背景色</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_opacity">色を薄くする</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_hide">隠す</label>
+                        <br>
+                        <label><input type="color" name="tag_borderColor">ボーダー色</label>
+                        <label><input type="color" name="tag_backgroundColor">背景色</label>
+                    </dd>
+                    <dt>該当作品</dt>
+                    <dd>
+                        <label><input type="checkbox" name="tag_mode" value="tag_work_border">ボーダー</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_work_background">背景色</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_work_opacity">色を薄くする</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_work_hide">隠す</label>
+                        <br>
+                        <label><input type="color" name="tag_work_borderColor">ボーダー色</label>
+                        <label><input type="color" name="tag_work_backgroundColor">背景色</label>
+                    </dd>
+                    <dt>非該当作品</dt>
+                    <dd>
+                        <label><input type="checkbox" name="tag_mode" value="tag_noWork_border">ボーダー</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_noWork_background">背景色</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_noWork_opacity">色を薄くする</label>
+                        <label><input type="checkbox" name="tag_mode" value="tag_noWork_hide">隠す</label>
+                        <br>
+                        <label><input type="color" name="tag_noWork_borderColor">ボーダー色</label>
+                        <label><input type="color" name="tag_noWork_backgroundColor">背景色</label>
+                    </dd>
+                </dl>
             </dd>
             <dt>対象タグ（改行区切り 完全一致）</dt>
             <dd>
-                <textarea id="tags" cols="20" rows="20"></textarea>
+                <textarea id="tags" cols="20" rows="8"></textarea>
             </dd>
         </dl>
         <button id="save" type="button">保存</button>
