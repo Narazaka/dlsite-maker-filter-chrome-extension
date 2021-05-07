@@ -55,22 +55,6 @@ function filterItems() {
             const makerName = $makerName.textContent;
             const work = options.works.find(work => work.makerNamesMap[makerName]);
             applyStylesForWork($item, work);
-            /*
-            const border = work && work.modes.border ? `2px solid ${work.borderColor}` : "";
-            if ($item.style.border !== border) $item.style.border = border;
-            const background = work && work.modes.background ? work.backgroundColor : "";
-            if ($item.style.background !== background) $item.style.background = background;
-            const opacity = work && work.modes.opacity ? "0.4" : "";
-            if ($item.style.opacity !== opacity) $item.style.opacity = opacity;
-            if (work && work.modes.hide) {
-                if ($item.style.display !== "none") {
-                    $item.dataset.dlsiteMakerFilterDisplay = $item.style.display;
-                    $item.style.display = "none";
-                }
-            } else if ($item.style.display === "none") {
-                $item.style.display = $item.dataset.dlsiteMakerFilterDisplay;
-            }
-            */
         }
         if ($searchTags) {
             const tagNames = [];

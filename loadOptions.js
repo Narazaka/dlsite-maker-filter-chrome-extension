@@ -101,7 +101,7 @@ async function loadOptions() {
     return new Promise((resolve) => {
         chrome.storage.local.get({
             // mode: "gray",
-            // ignoreMakerNames: "aaa",
+            // ignoreMakerNames: "",
             options: '{"works":[],"tags":[]}',
         }, 
         (rawOptionsArg) => {
@@ -120,13 +120,6 @@ async function loadOptions() {
                     ],
                     tags: [],
                 };
-                // console.log(items);
-                // const $mode = /** @type {HTMLInputElement} */(document.querySelector(`[name="mode"][value="${items.mode}"]`));
-                // console.log($mode);
-                // $mode.checked = true;
-                // const $ignoreMakerNames = /** @type {HTMLTextAreaElement} */(document.querySelector("#ignoreMakerNames"));
-                // $ignoreMakerNames.value = items.ignoreMakerNames;
-                // return;
             }
             if (!options.works) options.works = [];
             if (!options.tags) options.tags = [];
