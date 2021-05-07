@@ -77,9 +77,9 @@ async function saveSlotOptions(workSlot, tagSlot) {
 
     return new Promise((resolve) => {
         chrome.storage.local.set(rawOptions, () => {
-            document.querySelector("#notification").textContent = "保存しました";
+            document.querySelector("#notification").textContent += "保存しました ";
             setTimeout(() => {
-                document.querySelector("#notification").textContent = "";
+                document.querySelector("#notification").textContent = document.querySelector("#notification").textContent.slice(7);
             }, 1500);
             resolve();
         });
