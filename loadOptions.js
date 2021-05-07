@@ -1,6 +1,10 @@
 // @ts-check
 
 /**
+ * @typedef {"" | "work" | "noWork"} ModeType
+ */
+
+/**
  * @typedef  {"border" | "background" | "opacity" | "hide"} Mode
  */
 
@@ -8,17 +12,39 @@
 const modes = ["border", "background", "opacity", "hide"];
 
 /**
- * @typedef  {`${"" | "work_" | "noWork_"}${Mode}`} TagMode
+ * @typedef  {`work_${Mode}`} TagWorkMode
  */
 
-const tagModes = /** @type {TagMode[]} */(modes).concat(["work_border", "work_background", "work_opacity", "work_hide", "noWork_border", "noWork_background", "noWork_opacity", "noWork_hide"]);
+const tagWorkModes = /** @type {TagWorkMode[]} */(modes.map(mode => `work_${mode}`));
+
+/**
+ * @typedef  {`noWork_${Mode}`} TagNoWorkMode
+ */
+
+const tagNoWorkModes = /** @type {TagNoWorkMode[]} */(modes.map(mode => `noWork_${mode}`));
+
+/**
+ * @typedef  {Mode | TagWorkMode | TagNoWorkMode} TagMode
+ */
+
+/** @type {TagMode[]} */
+const tagModes = [...modes, ...tagWorkModes, ...tagNoWorkModes];
 
 /**
  * 
  * @param {TagMode} tagMode 
  */
 function separateTagMode(tagMode) {
-    return /** @type {["" | "work" | "noWork", Mode]} */(tagMode.includes("_") ? tagMode.split("_") : ["", tagMode]);
+    return /** @type {[ModeType, Mode]} */(tagMode.includes("_") ? tagMode.split("_") : ["", tagMode]);
+}
+
+/**
+ * 
+ * @param {ModeType} modeType 
+ * @param {Mode} mode 
+ */
+function joinTagMode(modeType, mode) {
+    return /** @type {TagMode} */(modeType ? `${modeType}_${mode}` : mode);
 }
 
 /** @typedef {"borderColor" | "backgroundColor"} ColorProperty */
@@ -33,8 +59,17 @@ const tagColorProperties = ["borderColor", "backgroundColor", "work_borderColor"
  * 
  * @param {TagColorProperty} tagColorProperty 
  */
- function separateTagColorProperty(tagColorProperty) {
-    return /** @type {["" | "work" | "noWork", ColorProperty]} */(tagColorProperty.includes("_") ? tagColorProperty.split("_") : ["", tagColorProperty]);
+function separateTagColorProperty(tagColorProperty) {
+    return /** @type {[ModeType, ColorProperty]} */(tagColorProperty.includes("_") ? tagColorProperty.split("_") : ["", tagColorProperty]);
+}
+
+/**
+ * 
+ * @param {ModeType} modeType 
+ * @param {ColorProperty} colorProperty 
+ */
+function joinTagColorProperty(modeType, colorProperty) {
+    return /** @type {TagColorProperty} */(modeType ? `${modeType}_${colorProperty}` : colorProperty);
 }
 
 /**
@@ -42,7 +77,7 @@ const tagColorProperties = ["borderColor", "backgroundColor", "work_borderColor"
  */
 
 /**
- * @typedef {{modes: {[M in TagMode]?: boolean}; tags: string; tagsMap?: {[name: string]: boolean}} & {[K in TagColorProperty]: string}} Tag
+ * @typedef {{modes: {[M in TagMode]?: boolean}; tags: string; tagsMap?: {[name: string]: boolean}; modeTypes?: {[M in ModeType]: boolean}} & {[K in TagColorProperty]: string}} Tag
  */
 
 /**
