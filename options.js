@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let workSlot = getWorkSlot();
     let tagSlot = getTagSlot();
 
-    const $save = document.querySelector("#save");
-    $save.addEventListener("click", () => saveSlotOptions(workSlot, tagSlot));
     /** @type {NodeListOf<HTMLInputElement>} */(document.querySelectorAll(`[name="work_slot"]`)).forEach($slot => $slot.addEventListener("click", async () => {
         await saveSlotOptions(workSlot, tagSlot);
         workSlot = getWorkSlot();
