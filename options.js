@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
         tagSlot = getTagSlot();
         await restoreOptions();
     }));
+    const $otherInputs = /** @type {NodeListOf<HTMLInputElement | HTMLTextAreaElement>} */(document.querySelectorAll(`input[type="checkbox"], input[type="color"], textarea`));
+    $otherInputs.forEach($input => $input.addEventListener("change", () => saveSlotOptions(workSlot, tagSlot)));
 
     function selectTab() {
         const tab = /** @type {HTMLInputElement} */(document.querySelector(`[name="tab"]:checked`)).value;
