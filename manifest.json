@@ -1,7 +1,7 @@
 {
     "name": "DLsite フィルター",
     "description": "DLsiteの作品一覧を作者名などでフィルターします",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "manifest_version": 2,
     "content_scripts": [{
         "matches": ["https://www.dlsite.com/*"],
