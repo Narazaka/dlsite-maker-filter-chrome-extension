@@ -10,6 +10,6 @@
   "license": "Zlib",
   "devDependencies": {
     "@types/chrome": "0.0.81",
-    "jszip": "^3.2.2"
+    "jszip": "^3.7.0"
   }
 }
