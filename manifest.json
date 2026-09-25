@@ -12,5 +12,13 @@
     },
     "permissions": [
         "storage"
-    ]
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{aabe6167-db0f-4f14-93c3-1d369e26c262}",
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
+        }
+    }
 }
