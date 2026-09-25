@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node tool/zip.js"
+    "build": "node tool/zip.js",
+    "submit": "npm run build && publish-extension --chrome-zip ext.zip --firefox-zip ext.zip"
   },
   "author": "",
   "license": "Zlib",
   "devDependencies": {
     "@types/chrome": "0.0.81",
-    "jszip": "^3.2.2"
+    "jszip": "^3.2.2",
+    "publish-browser-extension": "^6.1.1"
   }
 }
