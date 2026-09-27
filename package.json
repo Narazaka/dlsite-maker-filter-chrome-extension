@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "check": "tsc --noEmit",
     "build": "node tool/zip.js",
     "submit": "npm run build && publish-extension --chrome-zip ext.zip --firefox-zip ext.zip"
   },
@@ -12,6 +13,7 @@
   "devDependencies": {
     "@types/chrome": "0.0.81",
     "jszip": "^3.2.2",
-    "publish-browser-extension": "^6.1.1"
+    "publish-browser-extension": "^6.1.1",
+    "typescript": "^7.0.2"
   }
 }
