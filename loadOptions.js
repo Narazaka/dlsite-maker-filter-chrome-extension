@@ -73,17 +73,31 @@ function joinTagColorProperty(modeType, colorProperty) {
 }
 
 /**
- * @typedef {{modes: {[M in Mode]?: boolean}; makerNames: string; makerNamesMap?: {[name: string]: boolean}} & {[K in ColorProperty]: string}} Work
+ * @typedef {{modes: {[M in Mode]?: boolean}; makerNames: string} & {[K in ColorProperty]: string}} Work
  */
 
 /**
- * @typedef {{modes: {[M in TagMode]?: boolean}; tags: string; tagsMap?: {[name: string]: boolean}; modeTypes?: {[M in ModeType]: boolean}} & {[K in TagColorProperty]: string}} Tag
+ * @typedef {{modes: {[M in TagMode]?: boolean}; tags: string} & {[K in TagColorProperty]: string}} Tag
  */
 
 /**
  * @typedef Options
  * @property {Work[]} works
  * @property {Tag[]} tags
+ */
+
+/**
+ * @typedef {Work & {makerNamesMap: {[name: string]: boolean}}} LoadedWork
+ */
+
+/**
+ * @typedef {Tag & {tagsMap: {[name: string]: boolean}; modeTypes: {[M in ModeType]: boolean}}} LoadedTag
+ */
+
+/**
+ * @typedef LoadedOptions
+ * @property {LoadedWork[]} works
+ * @property {LoadedTag[]} tags
  */
 
 /**
@@ -113,7 +127,7 @@ async function loadOptions() {
                     works: [
                         {
                             makerNames: rawOptions.ignoreMakerNames,
-                            modes: rawOptions.mode === "gray" ? {background: true} : {[rawOptions.mode]: true},
+                            modes: rawOptions.mode === "gray" ? {background: true} : rawOptions.mode ? {[rawOptions.mode]: true} : {},
                             borderColor: "#bbbbbb",
                             backgroundColor: "#bbbbbb",
                         },

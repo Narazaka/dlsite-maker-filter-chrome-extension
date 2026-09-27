@@ -3,13 +3,15 @@
 /** @type {MutationObserver[]} */
 const observers = [];
 
-/** @type {Options} */
+/** @type {LoadedOptions} */
 let options;
+
+/** @typedef {{modes: {[M in TagMode]?: boolean}} & {[K in TagColorProperty]?: string}} Styleable */
 
 /**
  * 
  * @param {HTMLElement} $item 
- * @param {[ModeType, Work | Tag][]} wts
+ * @param {[ModeType, Styleable | undefined][]} wts
  */
 function applyStyles($item, wts) {
     let border = "";
@@ -28,7 +30,7 @@ function applyStyles($item, wts) {
         const backgroundProp = joinTagMode(modeType, "background");
         if (wt && wt.modes[backgroundProp]) {
             const backgroundColorProp = joinTagColorProperty(modeType, "backgroundColor");
-            background = wt[backgroundColorProp];
+            background = /** @type {string} */(wt[backgroundColorProp]);
             break;
         }
     }
@@ -42,7 +44,7 @@ function applyStyles($item, wts) {
             break;
         }
     }
-    if ($item.style.opacity !== opacity) $item.style.opacity = opacity;
+    if ($item.style.opacity !== opacity) $item.style.opacity = /** @type {string} */(opacity);
 
     let displayNone;
     for (const [modeType, wt] of wts) {
@@ -58,7 +60,7 @@ function applyStyles($item, wts) {
             $item.style.display = "none";
         }
     } else if ($item.style.display === "none") {
-        $item.style.display = $item.dataset.dlsiteMakerFilterDisplay;
+        $item.style.display = /** @type {string} */($item.dataset.dlsiteMakerFilterDisplay);
     }
 }
 
@@ -76,6 +78,7 @@ function filterItems() {
             work = options.works.find(work => work.makerNamesMap[makerName]);
         }
         if ($searchTags) {
+            /** @type {string[]} */
             const tagNames = [];
             for (const $searchTag of $searchTags) {
                 const tagName = $searchTag.textContent.trim();
@@ -91,7 +94,7 @@ function filterItems() {
 }
 
 async function loadSettings() {
-    options = await loadOptions();
+    options = /** @type {LoadedOptions} */(await loadOptions());
     options.works.forEach(work => {
         work.makerNamesMap = {};
         for (const makerName of work.makerNames.split("\n").filter(Boolean)) work.makerNamesMap[makerName] = true;
@@ -124,12 +127,12 @@ const mutationObserverInit = {
 async function main() {
     await loadSettings();
 
-    /** @type {HTMLDivElement} */
-    let element;
+    /** @type {HTMLDivElement | null} */
+    let element = null;
     let index = 0;
     while (index < 60) {
         await wait(1000);
-        element = /** @type {HTMLDivElement} */(document.querySelector("#new_worklist, #search_result_list, #__workbox, #ana_work_wrapper"));
+        element = document.querySelector("#new_worklist, #search_result_list, #__workbox, #ana_work_wrapper");
         if (element) break;
         index++;
     }

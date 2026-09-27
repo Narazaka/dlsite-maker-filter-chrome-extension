@@ -73,15 +73,17 @@ async function saveSlotOptions(workSlot, tagSlot) {
         ignoreMakerNames: undefined,
     };
 
-    return new Promise((resolve) => {
+    const $notification = document.querySelector("#notification");
+    if (!$notification) throw new Error("Notification element not found");
+    return /** @type {Promise<void>} */(new Promise((resolve) => {
         chrome.storage.local.set(rawOptions, () => {
-            document.querySelector("#notification").textContent += "保存しました ";
+            $notification.textContent += "保存しました ";
             setTimeout(() => {
-                document.querySelector("#notification").textContent = document.querySelector("#notification").textContent.slice(7);
+                $notification.textContent = $notification.textContent.slice(7);
             }, 1500);
             resolve();
         });
-    })
+    }))
 }
 
 async function restoreOptions() {
@@ -90,7 +92,7 @@ async function restoreOptions() {
     const workSlot = Number(/** @type {HTMLInputElement} */(document.querySelector(`[name="work_slot"]:checked`)).value);
     const work = options.works[workSlot] || {modes: {}, makerNames: ""};
     const $work_modes = /** @type {NodeListOf<HTMLInputElement>} */(document.querySelectorAll(`[name="work_mode"]`));
-    $work_modes.forEach($mode => $mode.checked = work.modes[/** @type {Mode} */($mode.value.slice(5))]);
+    $work_modes.forEach($mode => $mode.checked = !!work.modes[/** @type {Mode} */($mode.value.slice(5))]);
     const $makerNames = /** @type {HTMLTextAreaElement} */(document.querySelector(`#makerNames`));
     $makerNames.value = work.makerNames;
     colorProperties.forEach(prop => /** @type {HTMLInputElement} */(document.querySelector(`[name="work_${prop}"]`)).value = work[prop] || "#bbbbbb");
@@ -98,7 +100,7 @@ async function restoreOptions() {
     const tagSlot = Number(/** @type {HTMLInputElement} */(document.querySelector(`[name="tag_slot"]:checked`)).value);
     const tag = options.tags[tagSlot] || {modes: {}, tags: ""};
     const $tag_modes = /** @type {NodeListOf<HTMLInputElement>} */(document.querySelectorAll(`[name="tag_mode"]`));
-    $tag_modes.forEach($mode => $mode.checked = tag.modes[/** @type {TagMode} */($mode.value.slice(4))]);
+    $tag_modes.forEach($mode => $mode.checked = !!tag.modes[/** @type {TagMode} */($mode.value.slice(4))]);
     const $tags = /** @type {HTMLTextAreaElement} */(document.querySelector(`#tags`));
     $tags.value = tag.tags;
     tagColorProperties.forEach(prop => /** @type {HTMLInputElement} */(document.querySelector(`[name="tag_${prop}"]`)).value = tag[prop] || "#bbbbbb");
