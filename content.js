@@ -65,7 +65,7 @@ function applyStyles($item, wts) {
 }
 
 function filterItems() {
-    const $items = /** @type {NodeListOf<HTMLElement>} */(document.querySelectorAll(".n_worklist_item, .search_result_img_box_inner, .n_worklist tr, .push_list > li"));
+    const $items = /** @type {NodeListOf<HTMLElement>} */(document.querySelectorAll(".n_worklist_item, .search_result_img_box_inner, .n_worklist tr, .push_list > li, .genre_ranking > li"));
 
     for (const $item of $items) {
         const $makerName = $item.querySelector(".maker_name a");
