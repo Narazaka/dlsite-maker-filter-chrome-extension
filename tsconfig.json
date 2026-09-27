@@ -2,10 +2,10 @@
     "compilerOptions": {
         "allowJs": true,
         "noEmit": true,
-        "strict": true
+        "strict": true,
+        "types": ["chrome"]
     },
-    "exclude": [
-        "node_modules",
-        "dist"
+    "include": [
+        "*.js"
     ]
 }
