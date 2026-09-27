@@ -77,7 +77,7 @@ function filterItems() {
             const makerName = $makerName.textContent;
             work = options.works.find(work => work.makerNamesMap[makerName]);
         }
-        if ($searchTags) {
+        if ($searchTags.length) {
             /** @type {string[]} */
             const tagNames = [];
             for (const $searchTag of $searchTags) {
