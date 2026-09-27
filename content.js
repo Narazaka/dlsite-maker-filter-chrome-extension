@@ -95,6 +95,9 @@ function filterItems() {
 
 async function loadSettings() {
     options = /** @type {LoadedOptions} */(await loadOptions());
+    // 飛ばしたスロットは保存時に null になる
+    options.works = options.works.filter(Boolean);
+    options.tags = options.tags.filter(Boolean);
     options.works.forEach(work => {
         work.makerNamesMap = {};
         for (const makerName of work.makerNames.split("\n").filter(Boolean)) work.makerNamesMap[makerName] = true;
