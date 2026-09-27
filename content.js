@@ -135,7 +135,7 @@ async function main() {
     let index = 0;
     while (index < 60) {
         await wait(1000);
-        element = document.querySelector("#new_worklist, #search_result_list, #__workbox, #ana_work_wrapper");
+        element = document.querySelector("#new_worklist, #search_result_list, #__workbox, #ana_work_wrapper, #ranking_table");
         if (element) break;
         index++;
     }
